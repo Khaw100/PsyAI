@@ -58,7 +58,7 @@ cd PsyAI
 For **Windows**:
 ```bash
 python -m venv psyai
-psyai\Scriptsctivate    # Activate the environment in PowerShell
+.\psyai\Scripts\activate      # Activate the environment in PowerShell
 ```
 
 For **Linux/Mac**:
@@ -85,10 +85,6 @@ You can run the example chatbot or single input demo by executing the following 
   python demo_single.py
   ```
 
-### 5. Test and Use PsyAI
-Once the environment is set up, you can interact with PsyAI through the Gradio interface.  
-For testing, use `temp.py` or run one of the demo scripts directly to see the features in action.
-
 ---
 
 ## ⚙️ Configuration
@@ -101,7 +97,7 @@ PsyAI supports integration with various LLM clients. By default, it uses the **G
 
 Example `.env` file:
 ```env
-GEMINI_API_KEY=your-api-key-here
+GEMINI_API_KEY=your-api-key-here 
 ```
 
 ---
@@ -114,11 +110,6 @@ To contribute:
 1. Fork the repository.
 2. Create a new branch for your feature or bugfix.
 3. Submit a pull request with a detailed description of your changes.
-
----
-
-## 📄 License
-This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
 
 ---
 
