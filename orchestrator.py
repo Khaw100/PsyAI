@@ -65,28 +65,32 @@ class Orchestrator:
                         "clarified_text": clarified_text
                     }
                 else:
-                    thought = "Still unclear after clarification. Providing general education."
-                    education = self.agents["educate"].run("mental health basics")
-
-                    result = {
+                    thought = "Still unclear after clarification. Providing general support." 
+                    result = { 
                         "category": "other",
                         "context": [],
                         "recommendations": [],
-                        "education": education["education"],
+                        "education": (
+                            "I could not find a specific category for what you're feeling. "
+                            "That's completely okay — your experience is still valid. "
+                            "Talking directly to a psychologist may help you explore it further."
+                        ), 
                         "clarified": True,
                         "suicidal_ideation": suicidal,
                         "clarified_text": clarified_text
                     }
             else:
                 # Simple mode (fallback directly)
-                thought = "Input unclear. Providing general recommendations."
-                education = self.agents["educate"].run("mental health basics")
-
+                thought = "Input unclear. Providing general support." 
                 result = {
                     "category": "other",
                     "context": [],
                     "recommendations": [],
-                    "education": education["education"],
+                    "education": (
+                        "I could not find a specific category for what you're feeling. "
+                        "That's completely okay — your experience is still valid. "
+                        "Talking directly to a psychologist may help you explore it further."
+                    ), 
                     "clarified": False,
                     "suicidal_ideation": suicidal
                 }

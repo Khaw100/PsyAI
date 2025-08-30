@@ -1,10 +1,8 @@
 import gradio as gr
 from orchestrator import Orchestrator
-import openai
-from load_env import get_gemini_client, get_openai_client
+from load_env import get_gemini_client
 
 client = get_gemini_client()
-
 orch = Orchestrator(llm_client=client, model="gemini-1.5-flash")
 
 def chat(message, history):
@@ -12,30 +10,41 @@ def chat(message, history):
     data = result["result"]
 
     if data["category"] == "other" and data.get("clarified_text"):
-        response = (
-            f"🤔 I’m still not sure about the exact category.\n\n"
-            f"But here's a question to help us understand better:\n\n"
-            f"👉 {data['clarified_text']}\n\n"
-            f"📘 Educational Insight: {data['education']}"
-        )
-    else:
         response = f"""
-            🧠 **Category:** {data['category']}  
-            - Suicidal Ideation: {data['suicidal_ideation']}
+🤔 I’m not fully sure about the exact category.  
 
-            👩‍⚕️ **Recommended Psychologists:**  
-            {data['recommendations'] if data['recommendations'] else "General psychologist who can help with various concerns."}
+👉 Clarification question:  
+**{data['clarified_text']}**
 
-            📘 **Educational Insight:**  
-            {data['education']}
-        """
+📘 **Educational Insight:**  
+{data['education']}
+"""
+    else:
+        if data["recommendations"]:
+            recs = "\n".join(
+                [f"- {r['name']} ({', '.join(r['expertise'])}) → {r['contact']}"
+                 if isinstance(r, dict) else f"- {r}" for r in data["recommendations"]]
+            )
+        else:
+            recs = "General psychologist who can help with various concerns."
+
+        response = f"""
+🧠 **Category:** {data['category']}  
+- Suicidal Ideation: {data['suicidal_ideation']}
+
+👩‍⚕️ **Recommended Psychologists:**  
+{recs}
+
+📘 **Educational Insight:**  
+{data['education']}
+"""
 
     return history + [(message, response)]
 
 with gr.Blocks() as demo:
     gr.Markdown("## 🗨️ PsyAI - Interactive Chatbot")
     chatbot = gr.Chatbot()
-    msg = gr.Textbox(placeholder="Tell me how you feel...")
+    msg = gr.Textbox(placeholder="Tell me how you feel...", clear_on_submit=True)
     msg.submit(chat, [msg, chatbot], [chatbot])
 
 if __name__ == "__main__":
