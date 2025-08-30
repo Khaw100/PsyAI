@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Dr. Andini Prasetyo",
+    "expertise": ["anxiety", "depression"],
+    "location": "Jakarta",
+    "contact": "andini@mentalcare.id"
+  },
+  {
+    "name": "Dr. Raka Santosa",
+    "expertise": ["trauma", "grief"],
+    "location": "Bandung",
+    "contact": "raka@healingcenter.id"
+  },
+  {
+    "name": "Dr. Sinta Wijaya",
+    "expertise": ["self-esteem", "relationship"],
+    "location": "Surabaya",
+    "contact": "sinta@mindspace.id"
+  },
+  {
+    "name": "Dr. Yoga Mahendra",
+    "expertise": ["depression", "suicidal ideation"],
+    "location": "Yogyakarta",
+    "contact": "yoga@lifeline.id"
+  },
+  {
+    "name": "Dr. Nia Ramadhani",
+    "expertise": ["anxiety", "panic disorder"],
+    "location": "Jakarta",
+    "contact": "nia@calmclinic.id"
+  },
+  {
+    "name": "Dr. Farhan Nugroho",
+    "expertise": ["general mental health"],
+    "location": "Semarang",
+    "contact": "farhan@mindwell.id"
+  }
+]

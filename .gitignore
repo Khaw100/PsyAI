@@ -1,0 +1,22 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+
+# Virtual environment
+psyai/
+
+# IDE & Jupyter
+.vscode/
+.ipynb_checkpoints/
+
+# FAISS index
+mental_health_index/
+
+# Sensitive files
+.env
+
+# Logs
+*.log
