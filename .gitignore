@@ -5,17 +5,13 @@ __pycache__/
 *.pyd
 *.pkl
 
-# Specific file
-dummy.py
-temp.py
-
 # Virtual environment
 psyai/
 
 # IDE & Jupyter
 .vscode/
 .ipynb_checkpoints/
-*.ipynb
+.vs/
 
 # FAISS index
 mental_health_index/
